@@ -36,14 +36,19 @@ public class FeedbackService {
     }
 
     // look for a feedback by name (see controller)
-    public Feedback findFeedbackByName(String name) {
+    public List<Feedback> findFeedbackByName(String name) {
+        List<Feedback> foundFeedbacks = new ArrayList<Feedback>();
         for (Feedback feedback : feedbacks) {
             if (name.equals(feedback.getName())) {
-                return feedback;
+                foundFeedbacks.add(feedback);
             }
         }
-        return null;
-        // beter nog: throw exception!
+        if(foundFeedbacks.isEmpty()) {
+            throw new IllegalArgumentException("No feedback from that person!");
+        }
+        else {
+            return foundFeedbacks;
+        }
     }
 
     public int addFeedback(Feedback feedback) {
@@ -65,7 +70,8 @@ public class FeedbackService {
         throw new IllegalArgumentException("You really messed up your numbers!");
     }
 
-    public void deleteFeedback(Feedback feedback) {
+    public void deleteFeedback(int id) {
+        Feedback feedback = this.findFeedbackById(id);
         feedbacks.remove(feedback);
     }
 }
