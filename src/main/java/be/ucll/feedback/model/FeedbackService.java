@@ -18,7 +18,7 @@ public class FeedbackService {
         feedbacks.add(new Feedback(nextId.incrementAndGet(), "Maria", "Maar vraag dan toch gewoon eens de weg!"));
     }
 
-    // just return the whole list, JSP page takes care of presentation
+    // just return the whole list, Spring takes care of conversion to JSON
     public List<Feedback> getAllFeedbacks() {
         return feedbacks;
     }
