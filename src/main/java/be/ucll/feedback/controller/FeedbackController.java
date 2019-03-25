@@ -16,7 +16,12 @@ public class FeedbackController {
 
     @GetMapping("/hello")
     public String getHelloMessage() {
-        return "Hello from Springboot! By Rudy";
+        return "Hello from Springboot! By Rudy.";
+    }
+
+    @GetMapping("/thanks")
+    public String getThanksMessage() {
+        return "Thanks from the IP Minor bunch! By Rudy.";
     }
 
     @GetMapping("feedback")
